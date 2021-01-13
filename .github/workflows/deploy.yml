@@ -1,0 +1,32 @@
+name: Publish Hugo site
+
+# https://lijingcheng.github.io/posts/hugo/
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-20.04
+    steps:
+    # https://github.com/actions/checkout
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+
+    # https://github.com/peaceiris/actions-hugo
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.80.0'
+
+    - name: Build
+      run: hugo --minify
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        # https://github.community/t/all-github-actions-suddenly-failing-with-github-token-secret-does-not-exist/16108/7
+        github_token: ${{ secrets.PUBLISH_TOKEN }}
+        publish_dir: ./public

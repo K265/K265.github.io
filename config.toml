@@ -1,0 +1,22 @@
+baseURL = "https://k265.github.io/"
+languageCode = "zh-cn"
+title = "K.265's blog"
+theme = "github-style"
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[params]
+  author = "K.265"
+  description = "One is All, All is One"
+  # github = "K265"
+  email = "k.265@qq.com"
+  url = "https://github.com/k265"
+  keywords = "blog"
+  lastmod = true
+  favicon = "/images/github.png"
+  location = "China"
+
+
+[frontmatter]
+  lastmod = ["lastmod", ":fileModTime", ":default"]
+
